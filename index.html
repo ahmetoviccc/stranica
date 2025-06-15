@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kak se osjećaš?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-image: url('cartoon-style-summer-scene-with-cute-animals.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      color: #fff;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff9eb3;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    #response {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    #response p {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    #response img {
+      max-width: 90%;
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    #response {
+    display: block;
+    background: rgba(255,255,255,0.6);
+    border-radius: 20px 20px 20px 0px;
+    padding: 16px 24px;
+    margin: 20px auto;
+    max-width: 60%;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    font-size: 1.1em;
+    color: #2d3a4b;
+    position: relative;
+}
+#response::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    bottom: -16px;
+    width: 0;
+    height: 0;
+    border-top: 16px solid rgba(255,255,255,0.6);
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+}
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      select, button {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Kak se osjećaš, ljubavi? 💖</h1>
+
+  <select id="feeling">
+    <option value="">Odaberi osjećaj</option>
+    <option value="sad">Tužno 😢</option>
+    <option value="angry">Ljutito 😡</option>
+    <option value="anxious">Anksiozno 😰</option>
+    <option value="happy">Sretno 😊</option>
+    <option value="lonely">Usamljeno 🥺</option>
+    <option value="tired">Umorno 😴</option>
+    <option value="insecure">Nesigurno 😞</option>
+  </select>
+
+  <button onclick="showSupport()">Porukica 💌</button>
+
+  <div id="response"></div>
+
+  <script>
+    const responses = {
+      sad: {
+        message: "Znam da ti je teško, ali tu sam za tebe, uvijek. 💗",
+        gif: "https://media.giphy.com/media/BXrwTdoho6hkQ/giphy.gif"
+      },
+      angry: {
+        message: "Udahni duboko… nemoj me buhati. ❤️",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTlxcmVudHY5MjFwN2RpMDNnNnVhaXQ0b3I3MDFod3U5enlxa25jZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/11tqljvNZyY3PW/giphy.gif"
+      },
+      anxious: {
+        message: "Sve bude dobro, uz tebe sam i drzim te za ruku mici. 🤝",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTg5dm5uOTVoZWN0YTMzemZ3ODhhMHBscGljaGQ5aml5bDN1M3hnNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xLGH1ql2BUGPbfp5VU/giphy.gif"
+      },
+      happy: {
+        message: "Too volimm! Tvoj osmijeh mi je sve! 😍",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm5kanNmOTZhMmlwM2VvMnI2bW9ueHhoOW1qbGdqMDQwYTI2bjU3biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/2C5ZKn2rcV5m0/giphy.gif"
+      },
+      lonely: {
+        message: "Nisi sama, ni sekunde. Moje srce je tu uz tebe. 💞",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHFzYmEwa2kxOHNqNWo1djkwb3VwcGtsMHc4czlsZGJ2MDNoanMzcCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tPu4Wzi0QRPWJTiHeZ/giphy.gif"
+      },
+      tired: {
+        message: "Odmori se, zaslužila si to… a ja čuvam tvoje snove. 💤",
+        gif: "https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"
+      },
+      insecure: {
+        message: "Za mene si savršena baš takva kakva jesi. Nemaš zakaj biti nesigurna. 🫶",
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTlxcmVudHY5MjFwN2RpMDNnNnVhaXQ0b3I3MDFod3U5enlxa25jZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/WuZFeCtAKwjkY/giphy.gif"
+      }
+    };
+
+    function showSupport() {
+      const feeling = document.getElementById("feeling").value;
+      const responseDiv = document.getElementById("response");
+
+      if (responses[feeling]) {
+        const { message, gif } = responses[feeling];
+        responseDiv.innerHTML = `
+          <p>${message}</p>
+          <img src="${gif}" alt="Podrška">
+        `;
+      } else {
+        responseDiv.innerHTML = "<p>Molim te odaberi neki osjećaj. 💌</p>";
+      }
+    }
+  </script>
+</body>
+</html>
